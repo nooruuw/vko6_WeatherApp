@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+import {StyleSheet, View, Text } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import * as Location from 'expo-location'
 import Weather from './Weather'
@@ -33,12 +33,30 @@ export default function Position() {
 
 
     return (
-        <View>
-            <Text>{message}</Text>
-            <Text>{latitude.toFixed(3)}, {longitude.toFixed(3)}</Text>
+        <View style={styles.container}>
+            <Text style={styles.message}>{message}</Text>
+            <Text style={styles.heading}>Sijaintisi: {latitude.toFixed(3)}, {longitude.toFixed(3)}</Text>
             {isLoading === false &&
             <Weather lat={latitude} lon={longitude} />
             }
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: '#fff',
+        marginBottom: 16,
+    },
+    heading: {
+        fontSize: 16,
+        textAlign: 'center',
+        marginVertical: 16,
+    },
+    message: {
+        fontSize: 16,
+        textAlign: 'center',
+        marginTop: 40,
+
+    }
+})

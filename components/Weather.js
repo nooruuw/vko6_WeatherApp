@@ -1,4 +1,4 @@
-import { View, Text, Image } from 'react-native'
+import { StyleSheet, View, Text, Image } from 'react-native'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 
@@ -40,14 +40,26 @@ export default function Weather({lat, lon}) {
     
 
   return (
-    <View>
-        <Text>{temp}&#8451;</Text>
-        <Text>{description}</Text>
-        <Text>Wind: {wind} m/s</Text>
+    <View style={styles.container}>
+        <Text style={styles.heading}>Lämpötila: {temp}&#8451;</Text>
+        <Text style={styles.heading}>{description}</Text>
+        <Text style={styles.heading}>Wind: {wind} m/s</Text>
         {icon && 
-            <Image source={{uri: icon}} style={{width: 100, height: 100}}/>
+            <Image source={{uri: icon}} style={{width: 200, height: 200}}/>
         }
-        
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: '#fff',
+        margin: 16,
+    },
+    heading: {
+        fontSize: 16,
+        marginVertical: 8,
+        textAlign: 'center',
+        
+    },
+})
